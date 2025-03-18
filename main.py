@@ -59,3 +59,4 @@ print("Completed inserting 10 million documents.")
 
 # mongoexport --uri="mongodb+srv://admin:xxxxxxx@m10vdj.cvcie.mongodb.net/testingsharding"  --collection=people  --out=people.json 
 # tar -czvf people.json.tgz people.json
+#  wget http://34.68.200.14/people.json.tgz
