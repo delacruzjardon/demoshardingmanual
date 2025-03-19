@@ -37,7 +37,7 @@ function getRanges(shards) {
 }
 
 db.adminCommand( {
-   shardCollection: 'sample.documents',
+   shardCollection: ns,
    key: {
       email: 1
    }
