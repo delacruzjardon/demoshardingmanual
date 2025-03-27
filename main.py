@@ -5,6 +5,7 @@
 
 import random
 import string
+from rounding import round_up
 from pymongo import MongoClient, InsertOne
 from itertools import product
 
@@ -12,6 +13,9 @@ from itertools import product
 client = MongoClient("mongodb+srv://admin:xxxxxxx@m10vdj.cvcie.mongodb.net/?retryWrites=true&w=majority&appName=m10vdj")
 db = client.testingsharding
 collection = db.people
+
+numofdoc = 3000000
+batchsize = 5000
 
 # Function to generate a random name
 def generate_name():
@@ -32,7 +36,8 @@ def generate_email(name, prefix):
 email_prefixes = [''.join(p) for p in product(string.ascii_lowercase, repeat=2)]
 
 documents = []
-for i in range(3000000):  # 3 million documents
+for i in range(numofdoc):  # numofdoc documents
+    print("Progress = " +  round_up(i/numofdoc,2) + " %")
     name = generate_name()
     email_prefix = random.choice(email_prefixes)
     email = generate_email(name, email_prefix)
@@ -47,7 +52,7 @@ for i in range(3000000):  # 3 million documents
     documents.append(InsertOne(document))
 
     # Insert in batches for efficiency
-    if (i + 1) % 1000 == 0:  # Batch every 1000
+    if (i + 1) % batchsize == 0:  # Batch every 1000
         collection.bulk_write(documents)
         documents = []  # Clear the list after inserting
 
@@ -55,7 +60,7 @@ for i in range(3000000):  # 3 million documents
 if documents:
     collection.bulk_write(documents)
 
-print("Completed inserting 3 million documents.")
+print("Completed inserting " +  numofdoc + " documents.")
 
 # mongoexport --uri="mongodb+srv://admin:xxxxxxx@m10vdj.cvcie.mongodb.net/testingsharding"  --collection=people  --out=people.json 
 # tar -czvf people.json.tgz people.json
