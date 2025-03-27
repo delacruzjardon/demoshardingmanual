@@ -11,5 +11,7 @@ Demo sharding Manual
 Demo sharding automatic
 
 1.- Run step 1 and 2 
+
 2.- Run automatic.js
+
 3.- Load data (mainmanual.py)
