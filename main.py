@@ -5,17 +5,23 @@
 
 import random
 import string
-from rounding import round_up
+import math
+
 from pymongo import MongoClient, InsertOne
 from itertools import product
 
 # Connect to MongoDB
-client = MongoClient("mongodb+srv://admin:xxxxxxx@m10vdj.cvcie.mongodb.net/?retryWrites=true&w=majority&appName=m10vdj")
+server = "mongodb://localhost:27018"
+client = MongoClient(server)
 db = client.testingsharding
-collection = db.people
+collection = db.peoplemanual
 
-numofdoc = 3000000
-batchsize = 5000
+numofdoc = 300000
+batchsize = 1000
+
+def round_up(n, decimals=0):
+    multiplier = 10**decimals
+    return math.ceil(n * multiplier) / multiplier
 
 # Function to generate a random name
 def generate_name():
@@ -37,7 +43,7 @@ email_prefixes = [''.join(p) for p in product(string.ascii_lowercase, repeat=2)]
 
 documents = []
 for i in range(numofdoc):  # numofdoc documents
-    print("Progress = " +  round_up(i/numofdoc,2) + " %")
+    
     name = generate_name()
     email_prefix = random.choice(email_prefixes)
     email = generate_email(name, email_prefix)
@@ -55,12 +61,13 @@ for i in range(numofdoc):  # numofdoc documents
     if (i + 1) % batchsize == 0:  # Batch every 1000
         collection.bulk_write(documents)
         documents = []  # Clear the list after inserting
-
+        print("Progress = " +  str(round_up(collection.count_documents({})/numofdoc,2)*100) + " %")
+    
 # Insert any remaining documents
 if documents:
     collection.bulk_write(documents)
 
-print("Completed inserting " +  numofdoc + " documents.")
+
 
 # mongoexport --uri="mongodb+srv://admin:xxxxxxx@m10vdj.cvcie.mongodb.net/testingsharding"  --collection=people  --out=people.json 
 # tar -czvf people.json.tgz people.json
