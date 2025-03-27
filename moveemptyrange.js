@@ -1,8 +1,11 @@
 // Generate two character prefix email ranges.
 // https://www.mongodb.com/docs/mongodb-shell/write-scripts/
-var ns = 'testingsharding.people';
+
+var database = "testingsharding"
+var collection = "peoplemanual"
+var ns = database + "." + collection;
 // COmnect to mongosh and ther run load("moveemptyrange.js")
-sh.shardCollection("testingsharding.people ", { email: 1 } )
+sh.shardCollection(ns, { email: 1 } )
 function getRanges(shards) {
    let ranges = [];
 
@@ -57,3 +60,4 @@ for (let i = 0; i < ranges.length; ++i) {
       toShard: shards[i]._id
    });
 }
+
