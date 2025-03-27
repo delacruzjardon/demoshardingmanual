@@ -4,7 +4,7 @@
 var database = "testingsharding"
 var collection = "peoplemanual"
 var ns = database + "." + collection;
-// COmnect to mongosh and ther run load("moveemptyrange.js")
+// Connect to mongosh and ther run load("moveemptyrange.js")
 sh.shardCollection(ns, { email: 1 } )
 function getRanges(shards) {
    let ranges = [];
@@ -39,13 +39,6 @@ function getRanges(shards) {
    return ranges;
 }
 
-db.adminCommand( {
-   shardCollection: ns,
-   key: {
-      email: 1
-   }
-} );
-
 const shards = db.adminCommand({
    listShards: 1
 }).shards;
@@ -60,4 +53,3 @@ for (let i = 0; i < ranges.length; ++i) {
       toShard: shards[i]._id
    });
 }
-
