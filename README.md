@@ -15,3 +15,5 @@ Demo sharding automatic
 2.- Run automatic.js
 
 3.- Load data (mainmanual.py)
+
+Finally compare db.peoplemanual.getShardDistribution() with db.peopleautomatic.getShardDistribution()
