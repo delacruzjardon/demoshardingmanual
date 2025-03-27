@@ -11,7 +11,7 @@ Demo sharding Manual
 -------------------------
 Demo sharding automatic
 
-1.- Run step 1 and 2 
+1.- Run step 1 and 2 (Only if you didn't run previously)
 
 2.- Run automatic.js
 
