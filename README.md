@@ -1,11 +1,12 @@
 Demo sharding Manual
+
 1.- Install docker (installdocker.sh)
 
 2.- Install tomodo (installtomodo.sh)
 
 3.- Run presplitting (moveemptyrange.js)
 
-4.- Load data (main.py)
+4.- Load data (manual.py)
 
 -------------------------
 Demo sharding automatic
@@ -14,6 +15,6 @@ Demo sharding automatic
 
 2.- Run automatic.js
 
-3.- Load data (mainmanual.py)
+3.- Load data (automatic.py)
 
 Finally compare db.peoplemanual.getShardDistribution() with db.peopleautomatic.getShardDistribution()
