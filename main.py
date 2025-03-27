@@ -1,7 +1,7 @@
 # run 
 #  python3 -m venv .
 #  source bin/activate
-# python3 -m pip install pymongo 
+#  python3 -m pip install pymongo 
 
 import random
 import string
@@ -32,7 +32,7 @@ def generate_email(name, prefix):
 email_prefixes = [''.join(p) for p in product(string.ascii_lowercase, repeat=2)]
 
 documents = []
-for i in range(10000000):  # 10 million documents
+for i in range(3000000):  # 3 million documents
     name = generate_name()
     email_prefix = random.choice(email_prefixes)
     email = generate_email(name, email_prefix)
@@ -55,7 +55,7 @@ for i in range(10000000):  # 10 million documents
 if documents:
     collection.bulk_write(documents)
 
-print("Completed inserting 10 million documents.")
+print("Completed inserting 3 million documents.")
 
 # mongoexport --uri="mongodb+srv://admin:xxxxxxx@m10vdj.cvcie.mongodb.net/testingsharding"  --collection=people  --out=people.json 
 # tar -czvf people.json.tgz people.json
