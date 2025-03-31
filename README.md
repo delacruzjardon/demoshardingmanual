@@ -1,4 +1,5 @@
 Demo sharding Manual
+(Intended to be executed in Instruqt MDB Fundamentals VM)
 
 1.- Install docker (installdocker.sh)
 
