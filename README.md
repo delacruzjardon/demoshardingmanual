@@ -1,4 +1,4 @@
-Demo sharding Manual
+# Demo sharding Manual
 
 (Intended to be executed in Instruqt MDB Fundamentals VM or Linux Ubuntu 24.04.2 LTS)
 
@@ -13,7 +13,7 @@ Demo sharding Manual
 5.- Load data (python3 manual.py)
 
 ---------------------------------------------
-Demo sharding automatic
+# Demo sharding automatic
 
 1.- Install docker and tomodo (check step 1 and 2 from Demo sharding Manual) (Only if you didn't run previously)
 
@@ -23,10 +23,12 @@ Demo sharding automatic
 
 4.- Load data ( python3 automatic.py)
 
-Finally compare db.peoplemanual.getShardDistribution() with db.peopleautomatic.getShardDistribution()
---------------------------------------------------------------------------------
 
-What does moveemptyrange.js do?
+Finally compare db.peoplemanual.getShardDistribution() with db.peopleautomatic.getShardDistribution()
+
+
+
+# What does moveemptyrange.js do?
 
     Shards the 'peoplemanual' collection by the 'email' field
     The script first enables sharding on the collection using the email field as the shard key:
