@@ -4,11 +4,11 @@ Demo sharding Manual
 
 1.- Install docker running this script installdocker.sh
 
-2.- Install tomodo running this script installtomodo.sh
+2.- Install Tomodo running this script installtomodo.sh
 
 3.- Connect to mongos with mongosh ( mongosh 'mongodb://localhost:27018' ) 
 
-4.- Inside mongosh run moveemptyrange.js ( load("moveemptyrange.js") )
+4.- Inside mongosh run moveemptyrange.js ( load("moveemptyrange.js") )--- This command will presplit the collection testingsharding.peoplemanual
 
 5.- Load data (python3 manual.py)
 
@@ -19,7 +19,7 @@ Demo sharding automatic
 
 2.- Connect to mongos with mongosh ( mongosh 'mongodb://localhost:27018' ) 
 
-3.-Inside mongosh and run automatic.js ( load("automatic.js") )
+3.-Inside mongosh and run automatic.js ( load("automatic.js") ) --- This command will keep the automatic splitting on collection testingsharding.peopleautomatic
 
 4.- Load data ( python3 automatic.py)
 
