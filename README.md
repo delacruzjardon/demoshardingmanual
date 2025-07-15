@@ -1,4 +1,5 @@
 Demo sharding Manual
+
 (Intended to be executed in Instruqt MDB Fundamentals VM)
 
 1.- Install docker running this script installdocker.sh
@@ -9,12 +10,12 @@ Demo sharding Manual
 
 4.- Inside mongosh run moveemptyrange.js ( load("moveemptyrange.js") )
 
-4.- Load data (python3 manual.py)
+5.- Load data (python3 manual.py)
 
--------------------------
+---------------------------------------------
 Demo sharding automatic
 
-1.- Run step 1 and 2 (Only if you didn't run previously)
+1.- Install docker and tomodo (check step 1 and 2 from Demo sharding Manual) (Only if you didn't run previously)
 
 2.- Connect to mongos with mongosh ( mongosh 'mongodb://localhost:27018' ) 
 
