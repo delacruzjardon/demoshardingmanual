@@ -16,7 +16,7 @@ client = MongoClient(server)
 db = client.testingsharding
 collection = db.peoplemanual
 
-numofdoc = 300000
+numofdoc = 30000
 batchsize = 1000
 
 def round_up(n, decimals=0):
