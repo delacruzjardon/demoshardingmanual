@@ -5,7 +5,9 @@ Demo sharding Manual
 
 2.- Install tomodo (installtomodo.sh)
 
-3.- Connect to mongos with mongosh and run moveemptyrange.js ( load("moveemptyrange.js") )
+3.- Connect to mongos with mongosh ( mongosh 'mongodb://localhost:27018' ) 
+
+4.- Inside mongosh run moveemptyrange.js ( load("moveemptyrange.js") )
 
 4.- Load data (manual.py)
 
