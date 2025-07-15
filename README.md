@@ -44,7 +44,7 @@ This means documents will be distributed (sharded) based on their email addresse
 
 The script wants to pre-allocate chunks/ranges for all possible two-letter, lowercase prefixes (‘aa’ to ‘zz’ = 26 x 26 = 676 combinations) of email addresses, evenly divided per available shard.
 
-It gathers all current shards with db.adminCommand({ listShards: 1 }).
+It gathers all current shards with ` db.adminCommand({ listShards: 1 })`.
 
 For each shard, it computes a range of those prefixes.
 
