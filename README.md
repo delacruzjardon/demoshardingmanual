@@ -1,6 +1,6 @@
 Demo sharding Manual
 
-(Intended to be executed in Instruqt MDB Fundamentals VM)
+(Intended to be executed in Instruqt MDB Fundamentals VM or Linux Ubuntu 24.04.2 LTS)
 
 1.- Install docker running this script installdocker.sh
 
