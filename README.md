@@ -30,7 +30,7 @@ Finally compare db.peoplemanual.getShardDistribution() with db.peopleautomatic.g
 
 # What does moveemptyrange.js do?
 
-** Shards the 'peoplemanual' collection by the 'email' field **
+**Shards the 'peoplemanual' collection by the 'email' field**
 
 The script first enables sharding on the collection using the email field as the shard key:
 
@@ -38,13 +38,13 @@ The script first enables sharding on the collection using the email field as the
 
 This means documents will be distributed (sharded) based on their email addresses.
 
-** Calculates Prefix Ranges for Distribution **
+**Calculates Prefix Ranges for Distribution**
 
 The script wants to pre-allocate chunks/ranges for all possible two-letter, lowercase prefixes (‘aa’ to ‘zz’ = 26 x 26 = 676 combinations) of email addresses, evenly divided per available shard.
 It gathers all current shards with db.adminCommand({ listShards: 1 }).
 For each shard, it computes a range of those prefixes.
 
-** Assigns Ranges (Move Empty Ranges) to Shards **
+**Assigns Ranges (Move Empty Ranges) to Shards**
 
 It uses the moveRange admin command to explicitly assign these prefix ranges (chunks) to each shard, so the ranges—initially empty, since probably no data with those prefixes exist yet—are ready and already balanced.
 
