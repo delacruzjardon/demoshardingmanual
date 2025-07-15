@@ -26,9 +26,9 @@
 
 Finally compare db.peoplemanual.getShardDistribution() with db.peopleautomatic.getShardDistribution()
 
+---------------------------------------------
 
-
-# What does moveemptyrange.js do?
+## What does moveemptyrange.js do?
 
 **Shards the 'peoplemanual' collection by the 'email' field**
 
